@@ -17,5 +17,11 @@ class QuestionAdmin(admin.ModelAdmin):
 		('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
 	]
 	inlines = [ChoiceInline]
+	# 要显示的字段名的元组
+	list_display = ('question_text', 'pub_date', 'was_published_recently')
+	# 优化Quesiton变更页：过滤器
+	list_filter = ['pub_date']
+	# 搜索框
+	search_fields = ['question_text']
 
 admin.site.register(Question, QuestionAdmin)
